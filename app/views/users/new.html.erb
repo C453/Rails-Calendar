@@ -1,0 +1,17 @@
+<% if session[:user_id]  != nil %>
+    <% if current_user.admin %>
+<h1>Add a User</h1>
+
+<%=form_for User.new do |f| %>
+    <p><%=f.label :email %></p>
+            <p><%=f.text_field :email %></p>
+            <p><%=f.label :password %></p>
+            <p><%=f.password_field :password %></p>
+            <p><%=f.label :password_confirmation %></p>
+            <p><%=f.password_field :password_confirmation %></p>
+            <p><%=f.label :admin %>
+            <%=f.check_box :admin, {}, "true", "false"%></p>
+            <p><%=f.submit "Add User" %></p>
+<%end%>
+    <%end%>
+<%end%>

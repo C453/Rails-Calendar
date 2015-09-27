@@ -1,0 +1,55 @@
+<% if session[:user_id]  != nil %>
+    <% if current_user.admin %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Allday:</strong>
+  <%= @event.allDay %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @event.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @event.end %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @event.color %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Credits:</strong>
+  <%= @event.credits %>
+</p>
+
+<p>
+  <strong>Chapter:</strong>
+  <%= @event.chapter %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %> |
+<%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <% end %>
+<% end %>

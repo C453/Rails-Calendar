@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AIA IR Calendar</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+
+<body>
+<div id='cssmenu'>
+
+  <ul>
+    <a style="text-decoration: none;" href="/"><%= image_tag 'aialogo.png', :class => "logo", :height => "40px" %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+    <% if(session[:user_id]  == nil) %>
+        <li class='last'><a href='/log-in'><span>Log In</span></a></li>
+    <% end %>
+
+    <% if(session[:user_id]  != nil) %>
+        <li class='last'><a href='/log-out'><span>Log Out</span></a></li>
+
+        <% if(current_user.admin) %>
+            <li><a href='/register'><span>Add A User</span></a></li>
+            <li><a href='/events/new'><span>Add An Event</span></a></li>
+        <% end %>
+
+    <% end %>
+  </ul>
+</div>
+<br/>
+<br/>
+
+<%= yield %>
+
+</body>
+</html>

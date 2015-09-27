@@ -1,0 +1,57 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <script>
+        function changeChapter() {
+            var e = document.getElementById("event_color");
+            document.getElementById("event_chapter").value = e.options[e.selectedIndex].text;
+        }
+    </script>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :allDay %><br>
+    <%= f.check_box :allDay %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label "Chapter" %><br>
+    <%= f.select(:color, options_for_select([['AIA United Kingdom', 'Green'],[ 'AIA Continental Europe', 'Blue'], ['AIA Hong Kong', 'Orange'], ['AIA Japan', 'Purple'], ['AIA Middle East', '#FF5050'], ['AIA Shanghai', '#FFCC66'], ['AIA National', '#99FF33'], ['AIA International', '#898989'], ['Other', '']]), {}, :onchange => 'changeChapter();') %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :credits %><br>
+    <%= f.text_field :credits %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+    <input id="event_chapter" type="hidden" name="event[chapter]" value="AIA United Kingdom"/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

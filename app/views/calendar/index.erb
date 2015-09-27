@@ -1,0 +1,59 @@
+<script src="http://fullcalendar.io/js/fullcalendar-2.3.1/lib/moment.min.js"></script>
+<script src="http://fullcalendar.io/js/fullcalendar-2.3.1/lib/jquery.min.js"></script>
+<script src="http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.min.js"></script>
+<script src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.js"></script>
+<link rel="stylesheet" type="text/css" href="http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.print.css" media='print' />
+<link rel="stylesheet" type="text/css" href="http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.css"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css"/>
+<script>
+
+    $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+            theme: true,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: false,
+            eventLimit: true, // allow "more" link when too many events
+            events: '/events.json',
+            eventClick: function(event) {
+                if (event.url) {
+                    return false;
+                }
+            },
+            eventRender: function(event, element) {
+                element.qtip({
+                    content: {
+                        text: "<h3>" + event.title + "</h3>" + "<p>" + event.description + "</p>" + "<h4 class='tooltipTitle'>Chapter:</h4>" + "<p class='tooltip'>" + event.chapter + "</p>" + "<h4  class='tooltipTitle'>Location:</h4>" + "<p class='tooltip'>" +  event.location + "</p>"
+                        <% if current_user != nil %>
+                        <% if current_user.admin %>
+                         + "<a href=/events/" + event.id + "/edit>Edit Event</a>"
+                         <% end %>
+                        <% end %>
+                    },
+
+                    position : {
+                        viewport: true,
+                        adjust : {
+                            screen : true
+                        }
+                    },
+                    hide: {
+                        delay: 200,
+                        fixed: true, // <--- add this
+                        effect: function() { $(this).fadeOut(250); }
+                    },
+                    style : {
+                        classes: 'qtip-bootstrap'
+                    }
+                });
+            }
+        });
+
+    });
+
+</script>
+<div id='calendar'></div>

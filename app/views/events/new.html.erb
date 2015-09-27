@@ -1,0 +1,9 @@
+<% if session[:user_id]  != nil %>
+    <% if current_user.admin %>
+<h1>Add An Event</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', events_path %>
+<%end %>
+<%end %>

@@ -1,0 +1,13 @@
+<% if session[:user_id]  != nil %>
+    <% if current_user.admin %>
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+        <%= link_to 'Back to Calendar', '/' %> |
+
+    <% end %>
+<% end %>

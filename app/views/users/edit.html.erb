@@ -1,0 +1,13 @@
+<% if session[:user_id]  != nil %>
+    <% if current_user.id == @user.id || current_user.admin %>
+        <h1>Update Password</h1>
+        <%=form_for @user do |f| %>
+            <p><%=f.label :password %></p>
+            <p><%=f.password_field :password %></p>
+            <p><%=f.label :password_confirmation %></p>
+            <p><%=f.password_field :password_confirmation %></p>
+            <p><%=f.hidden_field :updated_password, :value => true%></p>
+            <p><%=f.submit "Update Password" %></p>
+        <%end%>
+    <%end%>
+<%end%>

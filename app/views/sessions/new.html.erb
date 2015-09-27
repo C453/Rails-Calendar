@@ -1,0 +1,12 @@
+<%=form_tag '/log-in', :class => 'login-form', :name => 'Login'  do %>
+    <div class="header">
+      <h1>Login</h1>
+    </div>
+    <div class="content">
+    <%=text_field_tag :email, nil, :class => 'input username'%>
+    <%=password_field_tag :password, nil, :class => 'input password' %>
+    </div>
+    <div class="footer">
+    <%=submit_tag "Log in", :class => "button"  %>
+    </div>
+<%end%>

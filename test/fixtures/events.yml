@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  allDay: false
+  start: 2015-04-04 20:00:23
+  end: 2015-04-04 20:00:23
+  color: MyString
+  description: MyText
+  credits: 1.5
+  region: MyString
+  location: MyString
+
+two:
+  title: MyString
+  allDay: false
+  start: 2015-04-04 20:00:23
+  end: 2015-04-04 20:00:23
+  color: MyString
+  description: MyText
+  credits: 1.5
+  region: MyString
+  location: MyString

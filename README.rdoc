@@ -1,0 +1,18 @@
+== Rails-Calendar
+
+An example rails application which uses the Caledar.io js framework. Loads data from an external MySQL database.
+
+
+====Users
+There are currently two types of users:
+
+* Admins
+* Non-admins/guests
+
+
+Admins can create events and users
+
+
+Non admins/guests can only view the calendar
+
+When an account is created the user will be prompted to change their password upon first login

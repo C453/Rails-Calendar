@@ -1,0 +1,8 @@
+<% if session[:user_id]  != nil %>
+    <% if current_user.admin %>
+<h1>Editing Event</h1>
+
+<%= render 'form' %>
+<%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<% end %>
